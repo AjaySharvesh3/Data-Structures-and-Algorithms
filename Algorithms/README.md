@@ -23,4 +23,4 @@ Data Structures are the programmatic way of storing data so that data can be use
 - Matrix
 - Misc
 
-![For More Algorithms visit here](https://www.geeksforgeeks.org/data-structures)
+https://www.geeksforgeeks.org/data-structures
