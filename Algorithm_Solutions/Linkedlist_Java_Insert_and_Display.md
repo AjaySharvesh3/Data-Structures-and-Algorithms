@@ -29,7 +29,7 @@ Some of Linked **List functions** supported in Java are:
 | indexOf(element)| Returns the index in a list of the first occurrence of the specified element, or -1 if the list does not contain any element.|
 | lastIndexOf(element)| Returns the last element's index.|
 
-##Code
+## Code
 
 Let us see a simple program, that creates a linked list, gets value from user and inserts to the linked list and finally displays the elements of the list.
 
@@ -59,4 +59,4 @@ public class LinkedClass {
 
 **Output:**
 
-<Insert Image>
+![output](https://raw.githubusercontent.com/sriram23/Data-Structures-and-Algorithms./d13d2c47a2fc5236d2193cdead2a8f1b14d77e1c/Algorithm_Solutions/Image/Screenshot%20from%202018-10-06%2022-24-46.png)
