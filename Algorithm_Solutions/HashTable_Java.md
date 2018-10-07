@@ -56,8 +56,8 @@ The complete program is:
 		}
 ```
 
-Get the file [here](https://github.com)
+Get the file [here](https://github.com/sriram23/Data-Structures-and-Algorithms./blob/master/Algorithm_Solutions/DaysinWeek.java)
 
 ### Output:
 
-![Output](Link)
+![Output](https://github.com/sriram23/Data-Structures-and-Algorithms./blob/master/Algorithm_Solutions/Image/Screenshot%20from%202018-10-07%2008-45-15.png)
