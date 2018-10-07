@@ -70,18 +70,12 @@ class BST
 		{
 			return search(root, el);
 		}
-		
-		void breadthFirst();
-		void iterativePreorder();
-		void iterativePostorder();
-		void iterativeInorder();
-		
+	
 		void insert(const T&);
 		void deleteByMerging(BSTnode<T>*&);
 		void findAndDeleteByMerging(const T&);
 		void findAndDeleteByCopying(const T&);
 		void deleteByCopying(BSTnode<T>*&);
-		void balance(T*, int, int);
 		
 		void clear(BSTnode<T>*);
 		T* search(BSTnode<T>*, const T&) const;
@@ -96,7 +90,6 @@ class BST
 		int height(BSTnode<T>*);
 		void mirror(BSTnode<T>*);
 		void processNode(BSTnode<T>*);
-		T* searchByMerging(BSTnode<T>*, const T&) const;
 		
 		int LeftCount(BSTnode<T> *);
 		int rightCount(BSTnode<T> *node);
