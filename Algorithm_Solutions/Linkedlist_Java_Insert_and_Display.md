@@ -56,7 +56,7 @@ public class LinkedClass {
 	}
 }
 ```
-Get the code [here](https://github.com/sriram23)
+Get the code [here](https://github.com/sriram23/Data-Structures-and-Algorithms./blob/master/Algorithm_Solutions/LinkedClass.java)
 
 **Output:**
 
