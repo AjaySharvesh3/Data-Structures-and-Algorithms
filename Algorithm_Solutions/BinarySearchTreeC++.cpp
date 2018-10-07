@@ -402,40 +402,11 @@ int BST<T> :: leafCount(BSTnode<T> *node)
 		return leafCount(node->left)+leafCount(node->right);
 }
 
-/*template<class T>
-int BST<T> :: nonLeafCount(BSTnode<T> *node)
-{
-	/*if(node==NULL || (node->left==NULL && node->right==NULL) )	return 0;
-	
-	else
-	{
-		return leafCount(node->left)+leafCount(node->right)+1;
-	}*/
-	
-/*	if(node==NULL) 		return 0;
-	
-	else if(node->left || node->right)
-	{
-		if(node->left)	return nonLeafCount(node->left1)+1;
-		
-		if(node->right)	return nonLeafCount(node->right)+1;
-		
-		if(node->right && node->left)	return nonLeafCount(node->left)+nonLeafCount(node->right)+1;
-	}	
-}*/
-
-//static int lc=0, rc=0;
-
 template<class T>
 int BST<T> :: LeftCount(BSTnode<T> *node)
 {
 	if(node->left!=0)
 	{
-		//lc+=1;
-		//cout<<endl<<lc;
-		
-		//return LeftCount(node->left)+1;
-		
 		if(node->right)
 			return LeftCount(node->left)+LeftCount(node->right)+1;
 		
@@ -448,11 +419,6 @@ int BST<T> :: rightCount(BSTnode<T> *node)
 {
 	if(node->right!=0)
 	{
-		//rc+=1;
-		//cout<<endl<<rc;
-		
-		//rightCount(node->right);
-
 		if(node->left)
 			return rightCount(node->right)+rightCount(node->left)+1;
 			
@@ -465,9 +431,6 @@ void BST<T> :: mirror(BSTnode<T> *root)
 {
 	if(!root)	return;
 	
-	//processNode(root);
-	
-		
 	BSTnode<T> *temp=root->left;
 	
 	root->left=root->right;
@@ -477,67 +440,6 @@ void BST<T> :: mirror(BSTnode<T> *root)
 	mirror(root->right);
 }
 
-/*template<class T>
-void BST<T> :: processNode(BSTnode<T> *root)
-{
-	if(!root)	return ;
-	
-	BSTnode<T> *temp=root->left;
-	
-	root->left=root->right;
-	root->right=temp;
-}*/
-
-/*template<class T>
-void BST<T> :: iterativePreorder()
-{
-	stack< BSTnode<T>* > travStack;
-	BSTnode<T> *p=root;
-	
-	if(p!=0)
-	{
-		travStack.push(p);
-		
-		while(!travStack.empty())
-		{
-			p=travStack.pop();
-			visit(p);
-			
-			if(p->right!=0)
-				travStack.push(p->right);
-			
-			if(p->left!=0)
-				travStack.push(p->left);
-		}
-	}
-}
-
-template<class T>
-void BST<T> :: iterativePostorder()
-{
-	stack< BSTnode<T>* > travStack;
-	BSTnode<T> *p=root, *q=root;
-	
-	while(p!=0)
-	{
-		for(; p->left!=0; p=p->left)
-			travStack.push(p);
-		
-		while(p!=0 && (p->right==0 || p->right==q))
-		{
-			visit(p);
-			q=p;
-			
-			if(travStack.empty())	return;
-				
-			p=travStack.pop();
-		}
-		
-		travStack.push(p);
-		p=p->right;
-	}
-}
-*/
 int main()
 {
 	BST<int> *b=new BST<int>();
@@ -572,13 +474,10 @@ int main()
 	cout<<"\nThe preorder traversal : ";
 	b->preorder(b->root);
 	
-//	cout<<"\nThe iterative preorder traversal : ";
-//	b->iterativePreorder();
-	
 	cout<<"\nThe postorder traversal : ";
 	b->postorder(b->root);
 
-    cout<<"\nEnter the number to be deleted by copying : ";
+    	cout<<"\nEnter the number to be deleted by copying : ";
 	cin>>el;
 	b->findAndDeleteByCopying(el);
 	
@@ -603,12 +502,8 @@ int main()
 	cout<<"\nNon-leaf count : "<<((b->count(b->root))-(b->leafCount(b->root)));
 	
 	cout<<"\nThe left nodes : "<<(b->LeftCount(b->root));
-	//cout<<lc;
 
 	cout<<"\nThe right nodes : "<<(b->rightCount(b->root));
-	//cout<<rc;
-
-	//cout<<"\nThe non-leaf count : "<<(b->nonLeafCount(b->root));
 
 	cout<<"\nMirror image (preorder) : ";
 	b->mirror(b->root);
