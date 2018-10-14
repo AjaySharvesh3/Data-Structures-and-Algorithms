@@ -1,0 +1,28 @@
+import java.util.*;
+import java.util.HashMap;
+
+
+public class HashMap {
+	public static void main(){
+		System.out.println("HashMap Program");
+		
+		HashMap<Integer, String> hmap = new HashMap<Integer,String>();
+		
+		hmap.put(1, "one");
+		hmap.put(2, "two");
+		hmap.put(3, "three");
+		hmap.put(4, "four");
+		hmap.put(5, "five");
+		
+		for(hmap.Entry<Integer, String> entry: hmap.entrySet()){
+			int key = entry.getKey();
+			String value = entry.getValue();
+			System.out.println( key + " : "+value);
+		
+		}
+	
+	
+	} 
+
+
+}
