@@ -1,4 +1,4 @@
-class MinBinaryHeap<T> {
+export class MinBinaryHeap<T> {
   heap: T[] = [];
 
   private left(i) {
@@ -14,7 +14,7 @@ class MinBinaryHeap<T> {
     return (i - idx) / 2;
   }
 
-  private get heapSize() {
+  private heapSize() {
     return this.heap.length;
   }
 
@@ -30,10 +30,10 @@ class MinBinaryHeap<T> {
     const rightChild = this.right(i);
 
     let smallest = i;
-    if (leftChild < this.heapSize && this.heap[leftChild] < this.heap[i]) {
+    if (leftChild < this.heapSize() && this.heap[leftChild] < this.heap[i]) {
       smallest = leftChild;
     } else if (
-      rightChild < this.heapSize &&
+      rightChild < this.heapSize() &&
       this.heap[rightChild] < this.heap[i]
     ) {
       smallest = rightChild;
@@ -90,5 +90,12 @@ class MinBinaryHeap<T> {
     }
   }
 
-  delete(i: number) {}
+  delete(i: number) {
+    if (i < this.heapSize()) {
+      return;
+    }
+    const largest = this.heap.pop();
+    this.heap[i] = largest;
+    this.minHeapify(i);
+  }
 }
