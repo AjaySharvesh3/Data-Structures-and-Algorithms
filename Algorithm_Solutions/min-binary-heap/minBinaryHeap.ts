@@ -30,11 +30,16 @@ export class MinBinaryHeap<T> {
     const rightChild = this.right(i);
 
     let smallest = i;
-    if (leftChild < this.heapSize() && this.heap[leftChild] < this.heap[i]) {
+    if (
+      leftChild < this.heapSize() &&
+      this.heap[leftChild] < this.heap[smallest]
+    ) {
       smallest = leftChild;
-    } else if (
+    }
+
+    if (
       rightChild < this.heapSize() &&
-      this.heap[rightChild] < this.heap[i]
+      this.heap[rightChild] < this.heap[smallest]
     ) {
       smallest = rightChild;
     }
@@ -67,15 +72,16 @@ export class MinBinaryHeap<T> {
     return value;
   }
 
-  decreaseKey(i: number, newValue: T) {
-    if (newValue >= this.heap[i]) {
+  // set node index to newValue
+  decreaseKey(index: number, newValue: T) {
+    if (newValue >= this.heap[index]) {
       return;
     }
-    this.heap[i] = newValue;
-    let par = this.parent(i);
-    while (i != 0 && this.heap[par] > this.heap[i]) {
-      this.swap(i, par);
-      i = this.parent(i);
+    this.heap[index] = newValue;
+    let par = this.parent(index);
+    while (index != 0 && this.heap[par] > this.heap[index]) {
+      this.swap(index, par);
+      index = this.parent(index);
     }
   }
 
@@ -90,12 +96,68 @@ export class MinBinaryHeap<T> {
     }
   }
 
-  delete(i: number) {
-    if (i < this.heapSize()) {
+  // delete node index
+  delete(index: number) {
+    const size = this.heapSize();
+    if (index >= this.heapSize()) {
+      console.log(`${index} is larger or equal to heap size: ${size}`);
+      return;
+    }
+    if (index === size - 1) {
+      this.heap.pop();
       return;
     }
     const largest = this.heap.pop();
-    this.heap[i] = largest;
-    this.minHeapify(i);
+    this.heap[index] = largest;
+    let current = index;
+    let parent = this.parent(current);
+    if (parent >= 0 && this.heap[parent] > this.heap[current]) {
+      while (parent >= 0 && this.heap[parent] > this.heap[index]) {
+        this.swap(index, parent);
+        current = index;
+        parent = this.parent(current);
+      }
+    } else {
+      // bubble down
+      let left = this.left(current);
+      let right = this.right(current);
+      let twoChildren = left < this.heapSize() && right < this.heapSize();
+      let oneChild = left < this.heapSize();
+      while (oneChild) {
+        if (
+          twoChildren &&
+          this.heap[current] < this.heap[left] &&
+          this.heap[current] < this.heap[right]
+        ) {
+          return;
+        } else if (oneChild && this.heap[current] < this.heap[left]) {
+          return;
+        } else {
+          if (twoChildren) {
+            if (this.heap[left] < this.heap[right]) {
+              this.swap(current, left);
+              current = left;
+            } else {
+              this.swap(current, right);
+              current = right;
+            }
+          } else if (oneChild) {
+            if (this.heap[left] < this.heap[current]) {
+              this.swap(current, left);
+              current = left;
+            }
+          }
+        }
+
+        left = this.left(current);
+        right = this.right(current);
+        twoChildren = left < this.heapSize() && right < this.heapSize();
+        oneChild = left < this.heapSize();
+      }
+    }
+  }
+
+  toString() {
+    return JSON.stringify(this.heap);
   }
 }
