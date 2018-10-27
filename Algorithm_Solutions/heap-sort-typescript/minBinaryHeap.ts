@@ -1,5 +1,5 @@
 export class MinBinaryHeap<T> {
-  heap: T[] = [];
+  private heap: T[] = [];
 
   private left(i) {
     return 2 * i + 1;
@@ -65,9 +65,11 @@ export class MinBinaryHeap<T> {
 
     // Replace root with last child
     const lastValue = this.heap.pop();
-    if (typeof lastValue !== "undefined") {
-      this.heap[0] = lastValue;
-      this.minHeapify(0);
+    if (this.heapSize() > 0) {
+      if (typeof lastValue !== "undefined") {
+        this.heap[0] = lastValue;
+        this.minHeapify(0);
+      }
     }
     return value;
   }
