@@ -55,3 +55,8 @@ h3.delete(2);
 console.log(h3.toString() === "[1,9,8,17,11,21,15]");
 console.log(h3.getMin() === 1);
 console.log(h3.extractMin() === 1);
+
+const h4 = new MinBinaryHeap<number>();
+h4.insert(9);
+console.log(h4.extractMin() === 9);
+console.log(h4.extractMin() == null);

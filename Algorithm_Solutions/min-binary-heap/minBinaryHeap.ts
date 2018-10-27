@@ -65,9 +65,11 @@ export class MinBinaryHeap<T> {
 
     // Replace root with last child
     const lastValue = this.heap.pop();
-    if (typeof lastValue !== "undefined") {
-      this.heap[0] = lastValue;
-      this.minHeapify(0);
+    if (this.heapSize() > 0) {
+      if (typeof lastValue !== "undefined") {
+        this.heap[0] = lastValue;
+        this.minHeapify(0);
+      }
     }
     return value;
   }
