@@ -1,4 +1,4 @@
-package DataStructures;
+package valueStructures;
 
 import java.util.Scanner;
 
@@ -7,9 +7,9 @@ public class LinkedList {
     private Node head;
     static class Node {
         Node next;
-        int data;
-        public Node(int data) {
-            this.data = data;
+        int value;
+        public Node(int value) {
+            this.value = value;
             next = null;
         }
     }
@@ -17,13 +17,13 @@ public class LinkedList {
     public void print() {
         Node node = head;
         while(node != null) {
-            System.out.print(node.data + "\t");
+            System.out.print(node.value + "\t");
             node = node.next;
         }
     }
 
-    private void insertFront(int new_data) {
-        Node newNode = new Node(new_data);
+    private void insertFront(int new_value) {
+        Node newNode = new Node(new_value);
         if (head == null) {
             head = newNode;
             return;
@@ -32,8 +32,8 @@ public class LinkedList {
         head = newNode;
     }
 
-    private void insertBetween(int new_data, Node prevNode, Node nextNode) {
-        Node newNode = new Node(new_data);
+    private void insertBetween(int new_value, Node prevNode, Node nextNode) {
+        Node newNode = new Node(new_value);
         if (head == null || prevNode == null) {
             head = newNode;
             return;
@@ -42,8 +42,8 @@ public class LinkedList {
         newNode.next = nextNode;
     }
 
-    private void insertEnd(int new_data) {
-        Node newNode = new Node(new_data);
+    private void insertEnd(int new_value) {
+        Node newNode = new Node(new_value);
         if (head == null) {
             head = newNode;
             return;
@@ -56,25 +56,25 @@ public class LinkedList {
         newNode.next = null;
     }
 
-    private void search(int data) {
+    private void search(int value) {
         Node key = head;
-        if (head.data == data) {
-            System.out.println("Key Node: " + head.data);
+        if (head.value == value) {
+            System.out.println("Key Node: " + head.value);
             return;
         }
-        while(key.data != data) {
+        while(key.value != value) {
             key = key.next;
         }
-        System.out.println("Search Node Data is " + key.data);
+        System.out.println("Search Node value is " + key.value);
     }
 
-    public void delete(int data) {
+    public void delete(int value) {
         Node temp = head, prev = null;
-        if (temp != null && temp.data == data) {
+        if (temp != null && temp.value == value) {
             head = temp.next;
             return;
         }
-        while(temp != null && temp.data != data) {
+        while(temp != null && temp.value != value) {
             prev = temp;
             temp = temp.next;
         }
@@ -95,27 +95,27 @@ public class LinkedList {
         list.print();
         System.out.println();
 
-        System.out.println("Insert Data in Front...");
+        System.out.println("Insert value in Front...");
         list.insertFront(s.nextInt());
         list.print();
         System.out.println();
 
-        System.out.println("Insert Data in between...");
+        System.out.println("Insert value in between...");
         list.insertBetween(s.nextInt(), secondNode, thirdNode);
         list.print();
         System.out.println();
 
-        System.out.println("Insert Data at end...");
+        System.out.println("Insert value at end...");
         list.insertEnd(s.nextInt());
         list.print();
         System.out.println();
 
-        System.out.println("Search Data...");
+        System.out.println("Search  for a value...");
         list.search(s.nextInt());
         //list.print();
         System.out.println();
 
-        System.out.println("Delete Node...");
+        System.out.println("Delete a Node...");
         list.delete(s.nextInt());
         list.print();
         System.out.println();
