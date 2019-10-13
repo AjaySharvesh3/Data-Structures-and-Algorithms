@@ -3,8 +3,8 @@ import java.util.Scanner;
 /*  Class Node  */
 class Node
 {
-    protected int data;
-    protected Node link;
+    public int data;
+    public Node link;
  
     /*  Constructor  */
     public Node()
@@ -43,8 +43,8 @@ class Node
 /* Class linkedList */
 class linkedList
 {
-    protected Node start;
-    protected Node end ;
+    public Node start;
+    public Node end ;
     public int size ;
  
     /*  Constructor  */
