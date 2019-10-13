@@ -95,17 +95,17 @@ public class LinkedList {
         list.print();
         System.out.println();
 
-        System.out.println("Insert value in Front...");
+        System.out.println("Insert at the Front...");
         list.insertFront(s.nextInt());
         list.print();
         System.out.println();
 
-        System.out.println("Insert value in between...");
+        System.out.println("Insert value in between nodes...");
         list.insertBetween(s.nextInt(), secondNode, thirdNode);
         list.print();
         System.out.println();
 
-        System.out.println("Insert value at end...");
+        System.out.println("Insert at  the end...");
         list.insertEnd(s.nextInt());
         list.print();
         System.out.println();
